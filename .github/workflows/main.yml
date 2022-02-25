@@ -1,0 +1,18 @@
+name: Send Discord Message on PRs
+
+on: 
+  pull_request: 
+    types: [opened, labeled]
+env: 
+    DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+
+jobs: 
+  send-message: 
+    if: contains(github.event.pull_request.labels.*.name, 'level one')
+    runs-on: ubuntu-latest
+    name: Sends to Curriculum Channel 
+    steps: 
+    - name: Send Level One PRs to Curriculum Channel 
+      uses: Ilshidur/action-discord@master
+      with:
+        args: 'I am sending a message'
