@@ -2,15 +2,9 @@ name: Send Discord Message on PRs
 
 on: 
   pull_request: 
-    types: [opened, labeled]
+    types: [labeled]
 env: 
     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-
-jobs: 
-  log-info: 
-    runs-on: ubuntu-latest
-    steps: 
-      -  run: echo ${{github.event.issue.pull_request.*.name}}
 
   send-message: 
     if: contains(github.event.pull_request.labels.*.name, 'level one')
