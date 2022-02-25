@@ -6,6 +6,7 @@ on:
 env: 
     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
 
+jobs:
   send-message: 
     if: contains(github.event.pull_request.labels.*.name, 'level one')
     runs-on: ubuntu-latest
