@@ -15,7 +15,7 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: 'Look! A new PR, view it here: {{ github.event.pull_request.url }} \n Add an emoji on this message to claim this PR for review **Notes** \n - Do not claim your own PRs \n- Instructors, Mentors, SMEs, and Tech Leads should only review and merge Level One issues.'
+        args: 'Look! A new PR, view it here: {{ EVENT_PAYLOAD.event.pull_request.url }} \n Add an emoji on this message to claim this PR for review **Notes** \n - Do not claim your own PRs \n- Instructors, Mentors, SMEs, and Tech Leads should only review and merge Level One issues.'
 
 
 # name: Send Discord Message on PRs
