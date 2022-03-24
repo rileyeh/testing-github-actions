@@ -9,13 +9,11 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'level one')
     runs-on: ubuntu-latest
     name: Send Level One Issues 
-    steps: 
-    - name: Send Level One PRs to Curriculum Channel 
       env: 
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: 'Look! A new {{ EVENT_PAYLOAD.pull_request.labels[0].name }} PR, view it here: {{ EVENT_PAYLOAD.pull_request.url }} 
+        args: 'Look! A new **{{ EVENT_PAYLOAD.pull_request.labels[0].name }}** PR, view it here: {{ EVENT_PAYLOAD.pull_request.url }} 
         ```Add an emoji on this message to claim this PR for review```
         ```Do not claim your own PRs```
         ```Instructors, Mentors, SMEs, and Tech Leads should only review and merge Level One issues.```'
